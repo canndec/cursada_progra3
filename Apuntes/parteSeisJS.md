@@ -181,13 +181,13 @@ let nombre = localStorage.getItem("carrito")
 1. como carrito es un array de objetos, guardando como string(texto plano) -> JSON
 2. necesitamos convertir a objetos JS nuestro string JSON (formato de texto plano)
 let carrito = JSON.parse(localStorage.getItem("carrito"));
-console.log(localStorage.getItem("carrito"))
+console.log(localStorage.getItem("carrito")) (convierte un string que viene del localStorage)
 
 3. creamos un objeto estudiante = {fghfgh}
 
 4. convertimos el objeto en texto plano para poder almacenarlo en localStorage
 localStorage.setItem("estudiante",JSON.stringfy(estudiante));
-console.log(localStorage.getItem("estudiante")); //String {"g","f"}
+console.log(localStorage.getItem("estudiante")); //String {"g","f"}(convierte un objeto o array a string para poder guardarlo.)
 
 5. traer mi clave desde localStorage, almacenado en formato JSON     
 let estudianteAlmacenado = JSON.parse(localStorage.getItem("estudiante"));

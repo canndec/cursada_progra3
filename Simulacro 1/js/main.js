@@ -1,12 +1,14 @@
 /*
-agregar al localStorage : setear contraer
-mostrar carrito en html
-filtrar productos
-agregar a carrito - mostrar carrito
-vaciar carrito
-botones
+agregar al localStorage : setear contraer SI
+mostrar carrito en html SI
+filtrar productos SI
+agregar a carrito - mostrar carrito SI
+vaciar carrito SI
+botones SI  
 
-wrap - flex - f...?
+wrap - SI
+- flex - SI
+ f...?
 hacer es esto,recibe,hace . documentacion
 */
 
@@ -31,6 +33,7 @@ let listadoProductos = document.getElementById("listadoProductos");
 let cartaProducto = ""; /*HELP INICIALIZARRRRRR producto = objeto*/
 let carrito = [];
 let objetosCarrito = document.getElementById("elementos");
+
 
 //botones extra
 let barraBusqueda = document.getElementById("barraBusqueda"); //es para filtrar productos
@@ -59,6 +62,7 @@ vaciarCarrito.addEventListener("click",function(){
     precioVarTotal = 0;
     contador = [];
     mostrarCarrito(carrito);
+    cargarLocalStorage();
 });
 
 // funciones
@@ -100,7 +104,9 @@ function agregarACarrito(id){
         contador[indice] += 1; //agrego un 1 a cantidad de prod de ese indice
     }
     mostrarCarrito();
+    cargarLocalStorage();
 }
+//carrito = JSON.parse(localStorage.getItem("carrito"));
 
 function mostrarCarrito(){
 /**mostrar los elementos que estan dentro del array carrito */
@@ -130,8 +136,12 @@ function eliminarProducto(indice){
         contador.splice(indice,1);
     }
     mostrarCarrito();
+    cargarLocalStorage();
 }
-
+function cargarLocalStorage() {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
+    localStorage.setItem("contador", JSON.stringify(contador));
+}
 
 /* prueba anterior
 function eliminarProducto(indice) {
@@ -141,3 +151,18 @@ function eliminarProducto(indice) {
     // SPLICE: elimina segun indice, elimina cantidad de elementos desde esa posición.
     mostrarCarrito();
 }*/
+
+
+// para guardar y cargar carrito - en caso de que haya elementos en el carrito
+// al refrescar la pagina seguiran apareciendo
+const carritoGuardado = localStorage.getItem("carrito");
+const contadorGuardado = localStorage.getItem("contador");
+
+    if (carritoGuardado && contadorGuardado) {
+        carrito = JSON.parse(carritoGuardado);
+        contador = JSON.parse(contadorGuardado);
+    } else {
+        carrito = [];
+        contador = [];
+    }
+mostrarCarrito();
