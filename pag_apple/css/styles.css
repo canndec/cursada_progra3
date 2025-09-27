@@ -1,0 +1,145 @@
+
+/* ///////////////////////
+    Paleta de colores
+///////////////////////*/
+:root {
+    --azul-botones: #0071e3;
+
+    --gris-primario: #747475;
+    --negro-primario: #1d1d1f;
+ 
+    --blanco-primario: #ffffff;
+    --gris-primario: #f5f5f7;
+
+    --azul-degradado: #addcee;
+    --gris-degradado: #f3f7f8;
+}
+
+
+
+/* ///////////////////////
+    Estilos generales
+///////////////////////*/
+body {
+    font-family: monospace;
+}
+
+.logo {
+    width: 20px;
+}
+
+.presentacion-boton {
+    color: var(--blanco-primario);
+    background-color: var(--azul-botones);
+    color: var(--blanco-primario);
+    background-color: var(--azul-botones);
+    padding: 8px;
+    border-radius: 34px;
+    font-size: 0.7rem;
+}
+
+
+
+/* ///////////////////////
+    Encabezado
+///////////////////////*/
+
+/*
+header, div, nav, ul, img { border: 2px solid;}
+*/
+
+header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+nav {
+    width: 60%;
+}
+
+.lista-header {
+    display: flex;
+    padding-left: 0;
+    list-style-type: none;
+    justify-content: space-around;
+}
+
+header li {
+    font-size: 0.8rem;
+}
+
+
+
+/* ///////////////////////
+    Secciones
+///////////////////////*/
+
+.producto-img {
+    width: 400px;
+}
+/*
+.presentacion, .presentacion-info, .presentacion-producto, .presentacion-boton, h2, p {
+    border: 2px solid;
+}
+*/
+
+.presentacion, .presentacion-info, .presentacion-producto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.presentacion {
+    margin-bottom: 10px;
+    background: #ADDCEE;
+    background: linear-gradient(141deg, rgba(173, 220, 238, 1) 0%, rgba(243, 247, 248, 1) 100%);
+}
+
+.presentacion-info h2 {
+    font-size: 3rem;
+}
+
+.presentacion-producto_info {
+    text-align: center;
+}
+
+
+
+/* ///////////////////////
+    Media Queries
+///////////////////////*/
+/* 
+Son reglas CSS que permiten aplicar estilos condicionalmente en funcion de las caracteristicas del dispositivo o la ventana.
+
+@media (caracteristica) { }
+*/
+
+/* Para aplicar estilos unicamente cuando el ancho de la ventana sea menor a  */
+
+/* Extender el header */
+@media (max-width: 1200px) {
+    nav {
+        width: 85%;
+    }
+
+    .logo-container {
+        width: 5%;
+    }
+}
+
+/* Header en formato columna */
+@media (max-width: 950px) {
+    header, .lista-header {
+        flex-direction: column;
+    }
+
+    .lista-header {
+        align-items: center;
+    }
+
+    .lista-header li {
+        width: 20%;
+        font-size: 0.6rem;
+    }
+}

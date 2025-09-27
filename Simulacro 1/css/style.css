@@ -1,0 +1,68 @@
+:root {
+    --violeta-titulo: rgb(70, 19, 153);
+}
+
+#listadoProductos{
+    display: flex; /*enlinea*/
+    justify-content: center;
+    align-items: center;
+    /*width: 80%;*/
+    flex-wrap: wrap;
+    border: 2px solid;
+    padding: 10px;
+    margin: 20px 100px;
+}
+#busquedaProducto {
+    background-color: rgb(226, 206, 245);
+    display: flex;
+    justify-content:left;
+    flex-wrap: wrap;
+    margin-right: 75%;
+    padding: 10px;
+}
+label, h2{
+    margin-right: 10px;
+    color: var(--violeta-titulo);
+    font-weight: bolder;
+}
+#totalMonto {
+    border: 2px ;
+    /*padding: 5px;*/
+}
+#finalDeCompra {
+    display: flex;
+    justify-content:space-evenly;
+}
+button {
+    background-color: rgb(230, 208, 250);
+    border-color: rgb(70, 15, 102);
+}
+#botonVaciar{
+    background-color: rgba(184, 176, 176, 0.842);
+    color: black;
+    border-color: black;
+}
+#botonFinalizar{
+    background-color: rgb(130, 132, 231);
+}
+/*ul {
+    display: flex;
+    justify-content:space-evenly;
+}*/
+#infoProdCarrito {
+    background-color: rgb(219, 180, 255);
+    display: flex;
+    align-items: center;
+    justify-content:left;
+    flex-wrap: wrap; /*acomoda segun visivilidad/tamaño de pantalla*/
+    margin: 30px 30px;
+    margin-right: 70%;
+    padding: 5px; 
+}
+p {
+    padding-inline: 15px;
+}
+#botonEliminar {
+    margin-left: 10px;
+    padding-inline: 10px;
+}

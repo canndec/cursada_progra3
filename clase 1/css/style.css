@@ -1,0 +1,55 @@
+body {
+    margin: 0;
+}
+
+nav{
+    border: 2px solid green;
+    display: flex;
+
+}
+
+.nav_logo {
+    color: black;
+    text-decoration: none;
+}
+.azul {
+    color: #007bff;
+}
+
+.nav_items {
+    list-style: none;
+    display: flex;
+    border: 2px solid fuchsia;
+    padding-left: 0;
+    width: 100%;
+    justify-content: space-evenly;
+}
+
+.nav_items a {
+    text-decoration: none;
+    color: black;
+}
+
+.contenedor_principal {
+    border: 2px solid red;
+}
+/*
+.contenedor_principal span {
+    color: blue;
+}*/
+.title {
+    color: blue;
+}
+
+header {
+    border : 2px solid rgb(255, 0, 0);
+    width: 100%;
+    display: flex;
+}
+
+header div, header nav {
+    width: 50%;
+    /* flex: 1;*/
+}
+
+

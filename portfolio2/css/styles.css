@@ -1,0 +1,28 @@
+body {
+    margin: 0;
+}
+header, div, nav, p, ul, li {
+    border: 1px solid black;
+}
+
+header, .header-list{
+    display: flex;    
+}
+header {
+    justify-content: space-between;
+}
+header nav, .header-logo{
+    flex: 1; /*dividir los 2 contenedores*/
+}
+.header-list {
+    padding-left: 0%;
+    justify-content: space-evenly; /*mismo espacio*/
+}
+
+.header-list, li{
+    list-style-type: none; 
+}
+
+.resaltado-azul{
+    color: rgb(54, 141, 255);
+}
