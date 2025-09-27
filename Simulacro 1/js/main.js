@@ -67,6 +67,7 @@ vaciarCarrito.addEventListener("click",function(){
 
 let ordenar = document.getElementById("botonOrden");
 ordenar.addEventListener("click",function(){
+    // ordenar de a - z VERRRERERERE    
     let ordenados = productosTienda.sort((a,b) =>{
         if(a.nombre.toLowerCase() < b.nombre.toLowerCase()){
             return -1;
