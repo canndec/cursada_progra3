@@ -65,6 +65,21 @@ vaciarCarrito.addEventListener("click",function(){
     cargarLocalStorage();
 });
 
+let ordenar = document.getElementById("botonOrden");
+ordenar.addEventListener("click",function(){
+    let ordenados = productosTienda.sort((a,b) =>{
+        if(a.nombre.toLowerCase() < b.nombre.toLowerCase()){
+            return -1;
+        }
+        if(a.nombre.toLowerCase() > b.nombre.toLowerCase()){
+            return 1;
+        }
+        else{return 0;}
+    });
+    mostrarProductos(ordenados);
+})
+
+
 // funciones
 function mostrarProductos (array){
 /*Representacion de productos finales, su imagen, nombre, precio y su boton para agregar a carrito */
@@ -75,7 +90,7 @@ function mostrarProductos (array){
             <img src="${producto.ruta_img}" alt="">
             <h3>${producto.nombre}</h3>
             <p>$${producto.precio}</p>
-            <button onclick="agregarACarrito(${producto.id})">Agregar al carrito</button> 
+            <button id="botonAgregar" onclick="agregarACarrito(${producto.id})">Agregar al carrito</button> 
         </div> 
         `; //con atributo onclick todos lo escuchan
     });
@@ -143,6 +158,21 @@ function cargarLocalStorage() {
     localStorage.setItem("contador", JSON.stringify(contador));
 }
 
+// para guardar y cargar carrito - en caso de que haya elementos en el carrito
+// al refrescar la pagina seguiran apareciendo
+const carritoGuardado = localStorage.getItem("carrito");
+const contadorGuardado = localStorage.getItem("contador");
+
+if (carritoGuardado && contadorGuardado) {
+    carrito = JSON.parse(carritoGuardado);
+    contador = JSON.parse(contadorGuardado);
+} else {
+    carrito = [];
+    contador = [];
+}
+mostrarCarrito();
+
+
 /* prueba anterior
 function eliminarProducto(indice) {
     //carrito = carrito.filter(producto => producto.id !== id);
@@ -151,18 +181,3 @@ function eliminarProducto(indice) {
     // SPLICE: elimina segun indice, elimina cantidad de elementos desde esa posición.
     mostrarCarrito();
 }*/
-
-
-// para guardar y cargar carrito - en caso de que haya elementos en el carrito
-// al refrescar la pagina seguiran apareciendo
-const carritoGuardado = localStorage.getItem("carrito");
-const contadorGuardado = localStorage.getItem("contador");
-
-    if (carritoGuardado && contadorGuardado) {
-        carrito = JSON.parse(carritoGuardado);
-        contador = JSON.parse(contadorGuardado);
-    } else {
-        carrito = [];
-        contador = [];
-    }
-mostrarCarrito();

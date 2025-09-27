@@ -1,56 +1,79 @@
 :root {
     --violeta-titulo: rgb(70, 19, 153);
+    --lila-fondos: rgb(226, 206, 245);
+    --gris-eliminar:  rgb(213, 210, 214);
+    --violeta-oscuro: rgb(130, 132, 231);
+    --rosa-carrito:  rgb(226, 170, 243);
 }
-
+/*productos*/
 #listadoProductos{
-    display: flex; /*enlinea*/
+    display: flex;
     justify-content: center;
     align-items: center;
-    /*width: 80%;*/
     flex-wrap: wrap;
     border: 2px solid;
     padding: 10px;
     margin: 20px 100px;
 }
+
+/*div del label input button*/
 #busquedaProducto {
-    background-color: rgb(226, 206, 245);
+    background-color: var(--lila-fondos);
     display: flex;
     justify-content:left;
     flex-wrap: wrap;
-    margin-right: 75%;
+    margin-right: 73%;
     padding: 10px;
 }
+
+#botonOrden {
+    margin-left: 25px ; /*ajusta a posicion en div*/
+    background: none;
+    text-decoration:underline var(--violeta-titulo);
+    border: none;
+}
+
 label, h2{
     margin-right: 10px;
     color: var(--violeta-titulo);
     font-weight: bolder;
 }
-#totalMonto {
-    border: 2px ;
-    /*padding: 5px;*/
-}
+
+/*parte del carrito */
 #finalDeCompra {
     display: flex;
     justify-content:space-evenly;
 }
+
+/* botones */
 button {
-    background-color: rgb(230, 208, 250);
-    border-color: rgb(70, 15, 102);
+    padding: 5px;
 }
+/*agegar producto al carrito*/
+#botonAgregar {
+    background-color: var(--lila-fondos);
+    border-color: var(--violeta-titulo);
+}
+/*vaciar todo el carrito*/
 #botonVaciar{
-    background-color: rgba(184, 176, 176, 0.842);
-    color: black;
-    border-color: black;
+    background-color:var(--gris-eliminar);
 }
+
+/*finalizar compra*/
 #botonFinalizar{
-    background-color: rgb(130, 132, 231);
+    background-color: var(--violeta-oscuro);
 }
-/*ul {
-    display: flex;
-    justify-content:space-evenly;
-}*/
+
+/*eliminar un producto*/
+#botonEliminar {
+    margin-left: 10px;
+    padding-inline: 10px;
+    background-color: var(--gris-eliminar);
+}
+
+/* carrito desde js*/
 #infoProdCarrito {
-    background-color: rgb(219, 180, 255);
+    background-color:var(--rosa-carrito);
     display: flex;
     align-items: center;
     justify-content:left;
@@ -59,10 +82,9 @@ button {
     margin-right: 70%;
     padding: 5px; 
 }
+
+
+/* los p de datos del producto en el carrito*/
 p {
     padding-inline: 15px;
-}
-#botonEliminar {
-    margin-left: 10px;
-    padding-inline: 10px;
 }
