@@ -49,7 +49,7 @@ barraBusqueda.addEventListener("keyup",function(){ /*keyup, cuando termine de se
         console.table(productosFiltrados);
         mostrarProductos(productosFiltrados);
     });    
-
+    
 let precioVarTotal = 0; //la hago global para acceder
 let finalizarCompra = document.getElementById("botonFinalizar");
 finalizarCompra.addEventListener("click",function(){

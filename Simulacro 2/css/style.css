@@ -1,0 +1,82 @@
+:root {
+    --naranja-fondos: rgb(243, 182, 160);
+    --naranja-titulo:  rgb(245, 140, 91);
+    --marron: rgb(146, 118, 92)
+}
+
+#listadoProductos {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 50px;
+    border: 2px solid;
+    flex-wrap: wrap;
+}
+#listadoProductos p {
+    display: flex;
+    justify-content: center;
+}
+#listadoProductos button{
+    border: 2px solid var(--marron);
+    color:rgb(53, 39, 20);
+    background-color: rgb(240, 222, 199);
+}
+#listadoProductos img {
+    width: 100px;
+}
+
+
+#informacionFiltro {
+    display: flex;
+    justify-content: left;
+    margin: 20px 10px;
+    background-color: var(--naranja-fondos);
+    padding: 10px;
+    margin-right: 70%;
+    flex-wrap: wrap;
+}
+#informacionFiltro button {
+    margin-inline: 10px;
+}
+input {
+    margin-left: 5px;
+    width: 150px;
+}
+
+/*productos en principal*/
+#presentacionProd {
+    
+    padding: 20px;
+}
+
+/*section carrito*/
+
+#informacionCarrito {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+#informacionProducto {
+    display: flex;
+    justify-content:left;
+    align-items: center;
+    background-color:var(--naranja-fondos);
+    flex-wrap: wrap;
+    margin: 15px 50px;
+    margin-right: 70%;
+}
+#informacionProducto p {
+    padding-inline: 10px;
+}
+
+button {
+    padding: 7px;
+}
+#botonFinalizar {
+    background-color: var(--naranja-titulo);
+}
+#botonVaciar {
+    background-color: var(--marron);
+}
