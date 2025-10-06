@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Primer parcial</title>
+    <link rel="stylesheet" href="css/style.css">
+    <script defer src="js/main.js"></script>
+</head>
+<body>
+    <header>
+        <div>
+            <p>Fruteria</p>
+        </div>
+        <div id="informacionAlumno">
+            <!--nav con nomb y aprellido-->
+        </div>
+        <div>
+            <!-- <label for="inputTexto">Filtrar producto</label> -->
+            <input type="text" id="inputTexto" placeholder="Buscar...">
+        </div>
+        <div>
+            <p id="carritoCantidad">Carrito: 0 productos</p>
+        </div>
+    </header>
+    <main>
+        <section>
+            <h2>Nuestra Fruteria</h2>
+            <div id="seccionBotones">
+                <button id="ordenarPorNombre">Ordenar por nombre</button>
+                <button id="ordenarPorPrecio">Ordenar por precio</button>
+            </div>
+            <ul id="listadoProductos">
+<!--estos son los prod de inicio-->
+            </ul>
+        </section>
+        <section>
+            <h2>Carrito</h2>
+            <!--parte de carrito-->
+            <ul id="elementosCarrito">
+
+            </ul>
+            <button id="botonVaciar">Vaciar carrito</button>
+        </section>  
+        <button id="botonFinalizar">Finalizar compra</button>
+        <strong id="montoTotal">Total: $0</strong>
+
+
+    </main>
+
+</body>
+</html>
