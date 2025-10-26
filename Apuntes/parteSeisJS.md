@@ -2,7 +2,7 @@
 
 # Manipulacion del DOM en JS
 
-¿Que es el `DOM`? 
+**¿Que es el `DOM`?**
 - Document Object Model - Objetos Del Documento
 - es una representacion en memoria de la estructura de la pagina web
 - transforma el HTML en una estructura de nodos y objetos que pueden ser manipulados mediante JavaScript
