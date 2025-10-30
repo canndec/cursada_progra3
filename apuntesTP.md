@@ -76,11 +76,20 @@ mantiene abiertas varias
 **en un index.js general del back**
 *importaciones*
 import express from "express"; importa el framework express
+const app = express();
 import environments from "...environments"
 import connection from "./src/api/database/db.js" importamos la conexion de la bdd
-
-const app = express();
 const PORT = environments.port;
+
+import cors from "cors"; modulo de CORS 
+
+
+
+*Middlewares*
+app.use(cors()); middleware cors basico que permnite todas las solicitudes
+
+app.use(express.json()); middleware para parsear JSON en el body
+
 
 *Endpoints*
 app.get("/products", async (req,res) => {
@@ -102,10 +111,70 @@ app.get("/products", async (req,res) => {
     }
 });
 
+// get product by id -> consultar producto por su id
+app.get("/products/:id", async (req, res) => {
+    try {
+        let {id} =req.params; obtener valor numeros despues de productos/:id
+        let sql = SELECT * FROM products where id = ?;
+        const {rows} = await connection.query(sql, {id});
+        const 
+    }catch
+        error obteniendo producto con id
+        res.status(500).json{
+            error: error interno al obtener un prod con id
+        }
+})
+
+
+
 app.listen(PORT, () => {
     console.log("servidor corriendo en el puerto ${PORT})
 })
 
 dev para ejecutar
 
-*3/*
+npm install -> node_modules
+.env
+npm run dev -> servidor corriendo3000
+
+*3/ consumiendo nuestra API rest*
+
+*3.1/ instalar cors en nuestro servidor apra permitir a nuestra API ser consumida desde*
+
+npm i cors
+
+# FRONT
+touch index.html
+mkdir css js
+touch style.css/main.js
+
+levantar servidor en el back
+main getElementById()
+
+async function obtenerProducts(){
+    try{
+        let response = await fetch(`${url}/producto`);
+        console.log(solicitud fetch get a ${url}/productos)
+        let data await response.json();
+        let productos = data.payload; //convension info util
+        console.log(productos);
+        console.table(prouctos)
+
+        mostrarProductos(productos);
+
+    }catch(e){
+        console.error("error");
+    }
+}
+
+function mostrarProductos(array){
+    let htmlProductos = "";
+    array.forEach(prod =>{
+        htmlProductos += "";
+    });
+    contenedor.innerHTML = htmlProductos
+}
+
+function init(){
+    obtenerProductos()
+}
