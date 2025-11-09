@@ -54,11 +54,10 @@ usuario admin
 
 ## BACK
 *1.1/ terminal gitbash*
-init -y
-package.json
+- npm init -y -> (crea) package.json
 index.js
-npm install express
-touch .gitignore -> node_modules
+- npm install express
+- touch .gitignore -> node_modules
 
 *1.2/ setupe e instalacion*
 instalar dependencias - se muestran en package.json
@@ -67,8 +66,8 @@ instalar dependencias - se muestran en package.json
 `dotenv` .  modulo de carga variables de entorno desde un archivo ".env" entorno de ejecucon Node.js
 `mysql2` .  herramienta ´para conectarnos a nuestra bbdd mysql
 
-npm install nodemon dotenv mysql2
-npm install cors ¿?
+- npm install nodemon dotenv mysql2
+- npm install cors ¿?
 
 *1.3/ script personalizado y sintaxis ESM*
 agregamos type:

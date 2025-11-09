@@ -1,0 +1,1 @@
+//parte js debajo de cada html

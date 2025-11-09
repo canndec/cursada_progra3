@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>trabajo prueba</title>
+    <!--<script defer src="main.js"></script> -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/gh/kognise/water.css@latest/dist/dark.css'>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <a href="index.html">
+                    <il>Ver</il>
+                </a>        
+                <a href="consultar.html">
+                    <il>consultar</il>
+                </a>
+    
+                <a href="crear.html">
+                    <il>crear</il>
+                </a>
+                
+                <a href="modificar.html">
+                    <il>modificar</il>
+                </a>
+                
+                <a href="eliminar.html">
+                    <il>eliminar</il>
+                </a>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <h1>Listado productos</h1><hr>
+
+        
+        <section id="contenedor-productos">
+            <ul id="lista-productos"></ul>
+        </section>
+    </main>
+    
+    <script>
+        let contenedorProdutos = document.getElementById("contenedor-productos");
+let url = "http://localhost:3000";
+
+async function obtenerProductos(){
+    try{
+        let response = await fetch(`${url}/productos`);
+        console.log(`Solicitud fetch GET a ${url}/productos`);
+        
+        let data = await response.json();
+        
+        let productos = data.payload;
+        console.log(productos);
+
+        mostrarProductos(productos);
+
+    }catch (error) {
+        console.error("Error obteniendo productos: ", error);
+    }
+}
+
+function mostrarProductos(array){
+    let htmlProductos = "";
+    array.forEach(p => {
+        htmlProductos += `
+        <div class="card.producto">
+        <img src="${p.imagen}" alt="${p.nombre}">
+        <h3>${p.nombre}</h3>
+        <p>id: ${p.id}</p>
+        <p>$${p.precio}</p>
+        </div>
+        `;
+    });
+    contenedorProdutos.innerHTML = htmlProductos;
+}
+
+function init(){
+    obtenerProductos();
+}
+init();
+    </script>
+</body>
+</html>
