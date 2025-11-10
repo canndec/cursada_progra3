@@ -63,8 +63,6 @@
 
             let formData = new FormData(event.target); //obj from data a partir del form
 
-            //console.log(formData); // FormData { idProd → "2" }
-            // Ojo, esto no se muestra en navegadores basados en Chromium
 
             // Transformamos a objetos JS los valores de FormData
             let data = Object.fromEntries(formData.entries());
@@ -79,8 +77,7 @@
 
             let datos = await response.json();
 
-             // Extraemos de la respuesta payload, el primer resultado que contiene el objeto que consultamos
-            let producto = datos.payload[0];
+            let producto = datos.payload[0]; //  el primer resultado que contiene el objeto que consultamos
             console.log(producto);
 
             let htmlProducto = `
