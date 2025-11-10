@@ -4,6 +4,10 @@ Guia para resolver el backend
 1. CRUD minimo para que funcione cuanto antes -> 1 endpoint, 2 vista
 2. Optimizaciones para ese CRUD
 3. Aplicar el modelo MVC
+    3.1 desacoplar rutas
+    3.2 desaclopar middlewares
+    3.3 desacoplar controladores
+    3.4 desacoplar modelos
 4. Servir archivos estaticos y plantillas con EJS
 5. EXTRAS del TP
 

@@ -53,9 +53,9 @@
             let idProd = data.idProd; // Ahora ya tenemos guardado en una variable el valor del campo del formulario
             console.log(idProd);
 
-            console.log(`Realizando una peticion GET a la url ${url}/productos/${idProd}`);
+            console.log(`Realizando una peticion GET a la url ${url}/api/productos/${idProd}`);
             
-            let response = await fetch(`${url}/productos/${idProd}`);
+            let response = await fetch(`${url}/api/productos/${idProd}`);
 
             let datos = await response.json();
 

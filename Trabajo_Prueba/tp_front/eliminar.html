@@ -68,9 +68,9 @@
 
             let idProd = data.idProd; // valor del campo del formulario
 
-            console.log(`Realizando una peticion GET a la url ${url}/productos/${idProd}`);
+            console.log(`Realizando una peticion GET a la url ${url}/api/productos/${idProd}`);
             
-            let response = await fetch(`${url}/productos/${idProd}`);
+            let response = await fetch(`${url}/api/productos/${idProd}`);
             let datos = await response.json();
 
              // Extraemos de la respuesta payload, el primer resultado que contiene el objeto que consultamos
@@ -105,7 +105,7 @@
         async function eliminarProducto(id) {
             console.log(id); 
             try {
-                let response = await fetch(`${url}/productos/${id}`, {
+                let response = await fetch(`${url}/api/productos/${id}`, {
                     method: "DELETE"
                 });
                 let result = await response.json();
