@@ -40,7 +40,7 @@
         <hr>
         <form id="getProduct-form">
             <label for="idProd">Id del producto</label>
-            <input type="number" name="id" id="idProd" required>
+            <input type="number" name="idProd" id="idProd" required>
 
             <input type="submit" value="Consultar producto">
         </form>
@@ -68,7 +68,7 @@
 
             let idProd = data.idProd; // valor del campo del formulario
 
-            console.log(`Realizando una peticion DELETE a la url ${url}/productos/${idProd}`);
+            console.log(`Realizando una peticion GET a la url ${url}/productos/${idProd}`);
             
             let response = await fetch(`${url}/productos/${idProd}`);
             let datos = await response.json();

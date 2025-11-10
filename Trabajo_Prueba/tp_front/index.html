@@ -13,22 +13,22 @@
         <nav>
             <ul>
                 <a href="index.html">
-                    <il>Ver</il>
+                    <li>Ver</li>
                 </a>        
                 <a href="consultar.html">
-                    <il>consultar</il>
+                    <li>consultar</li>
                 </a>
     
                 <a href="crear.html">
-                    <il>crear</il>
+                    <li>crear</li>
                 </a>
                 
                 <a href="modificar.html">
-                    <il>modificar</il>
+                    <li>modificar</li>
                 </a>
                 
                 <a href="eliminar.html">
-                    <il>eliminar</il>
+                    <li>eliminar</li>
                 </a>
             </ul>
         </nav>
@@ -69,7 +69,7 @@ function mostrarProductos(array){
     array.forEach(p => {
         htmlProductos += `
         <div class="card.producto">
-        <img src="${p.imagen}" alt="${p.nombre}">
+        <img class="producto-img"src="${p.imagen}" alt="${p.nombre}">
         <h3>${p.nombre}</h3>
         <p>id: ${p.id}</p>
         <p>$${p.precio}</p>

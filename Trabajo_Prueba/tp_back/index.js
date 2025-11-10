@@ -54,7 +54,7 @@ app.get("/productos/:id", async (req,res) => {
     try{
         let { id } = req.params; //el valor numerico 
         
-        let sql = `SELECT * from productos where id = ?`; // ? placeholder
+        let sql = `SELECT * FROM productos where id = ?`; // ? placeholder
         const [rows] = await  connection.query(sql, [id]); //solo esto
 
         res.status(200).json({
@@ -74,7 +74,7 @@ app.post("/productos", async (req,res) => {
     try{
         const {nombre, categoria, imagen, precio} = req.body;
         console.log(req.body);
-        let sql = `INSERT INTO productos (nombre, categoria, imagen, precio) VALUES (?,?,?,?)`;
+        let sql = `INSERT INTO productos (nombre, categoria, imagen, precio) VALUES (?, ?, ?, ?)`;
         let [rows] = await connection.query(sql, [nombre, categoria, imagen, precio]);
 
         res.status(201).json({
@@ -93,9 +93,12 @@ app.post("/productos", async (req,res) => {
 // PUT -
 app.put("/productos", async (req, res) => {
     try {
-        let {nombre, categoria, imagen, precio} = req.body;
+        let {id, nombre, categoria, imagen, precio, active} = req.body;
         
-        let sql = `UPDATE productos SET nombre = ?, categoria = ?, imagen = ?, precio = ? WHERE id = ? `;
+        let sql = `
+            UPDATE productos
+            SET nombre = ?, categoria = ?, imagen = ?, precio = ? 
+            WHERE id = ? `;
         
         let [result] = await connection.query(sql, [nombre, categoria, imagen, precio, id]);
         console.log(result);
@@ -118,7 +121,7 @@ app.put("/productos", async (req, res) => {
 // DELETE - eliminar producto
 app.delete("/productos/:id", async (req,res) => {
     try{
-        let {id} = req.params;
+        let { id } = req.params;
         let sql = "DELETE FROM productos WHERE id = ?";
         //uso de baja logica - update
         let [result] = await connection.query(sql,[id]);
