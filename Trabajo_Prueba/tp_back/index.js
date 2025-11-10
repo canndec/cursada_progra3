@@ -1,30 +1,25 @@
-// ## importaciones
+// ## IMPORTACIONES
 import express from "express"; //framework express
 const app = express();
 import environments from "./src/api/config/environments.js"; //port
 import connection from "./src/api/database/db.js"; //conect a bdd
 const PORT = environments.port;
 import cors from  "cors"; //modulo cors
+import { loggerUrl, validateId } from "./src/api/middlewares/middlewares.js";
 
-
-// ## middlwares
+// ## MIDDLEWARES   
 app.use(cors());
 app.use(express.json()); //para parsear json en el body
-// logger -> por consola traer cada peticion que se produjo 
-app.use((req,res,next) => {
-    console.log(`[${new Date().toISOString()}] ${req.method} ${req.url}`)
-    next(); //NECESARIO         
+app.use(loggerUrl);
 
-});
 
-// ## endpoints
+// ## ENDPOINTS
 
 app.get("/dashboard", (req, res) => {
     // Devolvemos una respuesta en texto plano desde la url /dashboard
     // Posteriormente desde esta url devolveremos una pagina HTML de la carpeta views
     res.send("Hola desde la raiz del TP Integrador");
 });
-
 
 
 // GET -> trae todo
@@ -38,8 +33,6 @@ app.get("/productos", async (req, res) => {
             payload: rows,
             messange: rows.length === 0 ? "No se encontraron productos" : "Productos encontrados"
         });
-
-
     }catch(error){
         console.error(error)
         res.status(500).json({
@@ -50,12 +43,24 @@ app.get("/productos", async (req, res) => {
 });
 
 // get product by id
-app.get("/productos/:id", async (req,res) => {
+app.get("/productos/:id",validateId, async (req,res) => {
     try{
         let { id } = req.params; //el valor numerico 
         
+        // optimizacion 1 - validacion parametros
+        
+
         let sql = `SELECT * FROM productos where id = ?`; // ? placeholder
         const [rows] = await  connection.query(sql, [id]); //solo esto
+
+        //consulta y  resultado en la variables rows
+        // optimizacion 2
+        if(rows.length === 0){
+            console.log("Error no existe un producto con ese id");
+            res.status(404).json({
+                message: `No se encontro producto con id ${id}`
+            });
+        }
 
         res.status(200).json({
             payload: rows
@@ -74,11 +79,21 @@ app.post("/productos", async (req,res) => {
     try{
         const {nombre, categoria, imagen, precio} = req.body;
         console.log(req.body);
+
+        //optimizacion 1 - 
+        if(!nombre || !categoria || !imagen || !precio){
+            //el endpoint termina en el return y el usuario lo recibe
+            return res.status(400).json({
+                message: "Datos invalidos, asegurate de enviar todos los campos del formulario"
+            });
+        }
+
         let sql = `INSERT INTO productos (nombre, categoria, imagen, precio) VALUES (?, ?, ?, ?)`;
         let [rows] = await connection.query(sql, [nombre, categoria, imagen, precio]);
 
         res.status(201).json({
-            message: "producto creado con exito"
+            message: "producto creado con exito",
+            productId: rows.insertId
         });
 
     }catch (error) {
@@ -95,6 +110,13 @@ app.put("/productos", async (req, res) => {
     try {
         let {id, nombre, categoria, imagen, precio, active} = req.body;
         
+        // optimizacion 1 - valdiacion basica de datos
+        if(!nombre || !categoria || !imagen || !precio || !active){
+            return res.status(400).json({
+                message: "Faltan campos requeridos"
+            });
+        }
+
         let sql = `
             UPDATE productos
             SET nombre = ?, categoria = ?, imagen = ?, precio = ? 
@@ -103,6 +125,12 @@ app.put("/productos", async (req, res) => {
         let [result] = await connection.query(sql, [nombre, categoria, imagen, precio, id]);
         console.log(result);
         
+        // optimizacion 2  - que se actualziara el prod
+        if(result.affectedRows === 0){
+            return res.status(400).json({
+                message: "No se actualizo el producto"
+            });
+        }
         res.status(200).json({
             message: "Producto actualizado correctamente"
         });
@@ -119,13 +147,21 @@ app.put("/productos", async (req, res) => {
 });
 
 // DELETE - eliminar producto
-app.delete("/productos/:id", async (req,res) => {
+app.delete("/productos/:id", validateId, async (req,res) => {
     try{
         let { id } = req.params;
         let sql = "DELETE FROM productos WHERE id = ?";
         //uso de baja logica - update
         let [result] = await connection.query(sql,[id]);
         console.log(result);
+
+        // optimizacion 1 ->validar id
+        // optimizacion 2
+        if(result.affectedRows === 0){
+            res.status(404).json({
+                message: `No se encontro producto con id ${id}`
+            });
+        }
         return res.status(200).json({
             message:  `producto con id ${id} eliminado correctamente`
         })

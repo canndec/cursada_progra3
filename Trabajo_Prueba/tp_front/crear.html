@@ -60,6 +60,14 @@
                     },
                     body: JSON.stringify(data)
                 });
+
+                if(response.ok){
+                    console.log(response);
+                    let result = await response.json();
+                    console.log(result);
+                    alert(result.message);
+                }
+
             } catch(error) {
                 console.error("error al enviar los datos ", error);
                 alert("error al procesar la solicitud");
