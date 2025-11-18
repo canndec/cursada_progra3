@@ -1,0 +1,60 @@
+<%- include("partials/head.ejs") %>
+<%- include("partials/nav.ejs") %>
+    <main>
+        <section id="contenedor-productos">
+            <ul id="lista-productos"></ul>
+            <!-- iterar array de prod-->
+            <% productos.forEach(p => { %>
+                <div class="card.producto">
+                    <img class="producto-img"src="<%= p.imagen %>" alt="<%= p.nombre %>">
+                    <h3><%= p.nombre %></h3>
+                    <p>id: <%= p.id %></p>
+                    <p>$$<%= p.precio %></p>
+                    </div>
+            <% }); %>
+        </section>
+    </main>
+    
+    <script>
+        /*
+        let contenedorProdutos = document.getElementById("contenedor-productos");
+let url = "http://localhost:3000";
+
+async function obtenerProductos(){
+    try{
+        let response = await fetch(`${url}/api/productos`);
+        console.log(`Solicitud fetch GET a ${url}/api/productos`);
+        
+        let data = await response.json();
+        
+        let productos = data.payload;
+        console.log(productos);
+
+        mostrarProductos(productos);
+
+    }catch (error) {
+        console.error("Error obteniendo productos: ", error);
+    }
+}
+
+function mostrarProductos(array){
+    let htmlProductos = "";
+    array.forEach(p => {
+        htmlProductos += `
+        <div class="card.producto">
+        <img class="producto-img"src="${p.imagen}" alt="${p.nombre}">
+        <h3>${p.nombre}</h3>
+        <p>id: ${p.id}</p>
+        <p>$${p.precio}</p>
+        </div>
+        `;
+    });
+    contenedorProdutos.innerHTML = htmlProductos;
+}
+
+function init(){
+    obtenerProductos();
+}
+init();*/
+    </script>
+<%- include("partials/footer.ejs") %>
